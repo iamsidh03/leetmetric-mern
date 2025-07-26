@@ -1,0 +1,144 @@
+/* client/src/App.css */
+
+:root {
+    --easy-color: #1fbcaa;
+    --medium-color: #ffc01e;
+    --hard-color: #ef4743;
+    --primary-blue: #4a90e2;
+    --background-primary: #252526; 
+    --background-secondary: #1e1e1e;
+    --border-color: #eaa3a3;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    
+    background-color: var(--background-primary);
+    background-image: radial-gradient(circle at top left, rgba(74, 144, 226, 0.1), transparent 30%);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+}
+
+.app-container {
+    max-width: 700px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+
+.app-header h1 { font-size: 3rem; color: var(--primary-blue); margin-bottom: 10px; }
+.app-header p { font-size: 1.1rem; color: var(--text-secondary); }
+.search-container { display: flex; justify-content: center; gap: 10px; margin: 40px 0; }
+.search-input { width: 300px; padding: 12px 15px; font-size: 1rem; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--background-secondary); color: var(--text-primary); outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+.search-input:focus { border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3); }
+.search-button { padding: 12px 25px; font-size: 1rem; font-weight: 600; border: none; border-radius: 8px; background-color: var(--primary-blue); color: #fff; cursor: pointer; transition: background-color 0.2s; }
+.search-button:hover:not(:disabled) { background-color: #357abd; }
+.search-button:disabled { background-color: #555; cursor: not-allowed; }
+.error-message { color: #e94f4f; margin-top: 15px; min-height: 1.2em; }
+.loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--primary-blue); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 40px auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.stats-container { margin-top: 40px; animation: fadeIn 0.5s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+
+.profile-card { background-color: var(--background-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; display: flex; align-items: center; gap: 20px; text-align: left; margin-bottom: 25px; }
+.avatar { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary-blue); }
+.username { font-size: 2rem; margin: 0; }
+.rank { font-size: 1.1rem; color: var(--text-secondary); margin: 5px 0 0; }
+
+
+.stats-summary-card {
+    background-color: var(--background-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.summary-left { flex-shrink: 0; }
+.donut-chart { transform: rotate(-90deg); animation: fill-up 1s ease-out forwards; }
+@keyframes fill-up { from { stroke-dashoffset: 2000; } }
+
+
+.chart-text-main {
+    font-size: 28px;
+    font-weight: 600;
+    fill: var(--text-primary); 
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+.chart-text-sub {
+    font-size: 16px;
+    fill: var(--text-secondary); 
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+
+.summary-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+
+.difficulty-item {
+    text-align: left;
+}
+.difficulty-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+.difficulty-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.difficulty-label.easy { color: var(--easy-color); }
+.difficulty-label.medium { color: var(--medium-color); }
+.difficulty-label.hard { color: var(--hard-color); }
+
+.difficulty-count {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.difficulty-progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #3a3a3a;
+    border-radius: 4px;
+    overflow: hidden; 
+
+.difficulty-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
+}
+.easy-bg { background-color: var(--easy-color); }
+.medium-bg { background-color: var(--medium-color); }
+.hard-bg { background-color: var(--hard-color); }
+
+
+@media (max-width: 600px) {
+    .stats-summary-card, .profile-card { flex-direction: column; gap: 25px; text-align: center; }
+    .summary-right { align-items: stretch; }
+    .search-container { flex-direction: column; }
+    .search-input { width: 100%; }
+}
+}
